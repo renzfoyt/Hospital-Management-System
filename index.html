@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Olivarez General Hospital</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="Styles/base.css">
+  <link rel="stylesheet" href="Styles/header-nav.css">
+  <link rel="stylesheet" href="Styles/nav-dropdown.css">
+  <link rel="stylesheet" href="Styles/mobile-nav.css">
+  <link rel="stylesheet" href="Styles/sections-cards.css">
+  <link rel="stylesheet" href="Styles/service-detail.css">
+  <link rel="stylesheet" href="Styles/form-footer.css">
+  <link rel="stylesheet" href="Styles/hero-carousel.css">
+
+
+</head>
+<body>
+
+
+  <!-- ===== HEADER / NAV ===== -->
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a href="#" class="logo">
+        <img src="logo/olivarezlogo.png" alt="MySite logo" class="logo-img">
+      </a>
+      <nav class="nav-links" id="nav-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <div class="nav-dropdown" id="nav-services-dropdown">
+          <div class="nav-services-trigger-row">
+            <span class="nav-dropdown-label-wrap">
+              <a href="#services" class="nav-dropdown-label">Services</a>
+              <button class="nav-dropdown-chevron" id="nav-chevron-btn" aria-label="Toggle services menu" aria-expanded="false">
+                <svg viewBox="0 0 10 6" width="10" height="6" aria-hidden="true">
+                  <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </span>
+          </div>
+          <ul class="nav-dropdown-menu" id="nav-services-menu" role="menu"></ul>
+        </div>
+        <a href="#contact">Contact</a>
+        <a href="#FindDoc">Find a Doctor</a>
+        <a href="#Book">Book Appointment</a>
+      </nav>
+      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+
+  <!-- ===== HERO ===== -->
+  <section id="home" class="hero">
+    <div class="carousel" id="carousel">
+      <div class="carousel-track" id="carousel-track">
+        <div class="carousel-slide"><img src="slideshow/imgslide1.jpg" alt="Slide 1"></div>
+        <div class="carousel-slide"><img src="slideshow/imgslide2.png" alt="Slide 2"></div>
+        <div class="carousel-slide"><img src="slideshow/imgslide3.jpg" alt="Slide 3"></div>
+      </div>
+      <button class="carousel-btn prev" id="carousel-prev" aria-label="Previous slide">&#10094;</button>
+      <button class="carousel-btn next" id="carousel-next" aria-label="Next slide">&#10095;</button>
+      <div class="carousel-dots" id="carousel-dots"></div>
+    </div>
+    <div class="container hero-content">
+      <h1>Onward to Great Health</h1>
+      <p>Dr. Arcadio Santos Ave, Parañaque City, 1700, Metro Manila</p>
+      <a href="#about" id="cta-btn" class="btn">Get Started</a>
+    </div>
+  </section>
+
+
+  <!-- ===== ABOUT ===== -->
+  <section id="about" class="section">
+    <div class="container">
+      <h2>About our Team</h2>
+      <p>At Olivarez General Hospital, our physicians are committed to delivering compassionate,
+        patient-centered care backed by years of clinical expertise and professional excellence.
+        As the first hospital in Parañaque City, we have proudly served generations of families by
+        bringing together a diverse team of trusted specialists across multiple medical and surgical
+        disciplines.
+    </div>
+  </section>
+
+
+  <!-- ===== SERVICES ===== -->
+  <section id="services" class="section alt-bg">
+    <div class="container">
+      <div class="services-view" id="services-grid-view">
+        <h2>Services</h2>
+        <p class="section-subtitle">Tap a card for a quick overview, or open the full page for details.</p>
+        <div class="card-grid" id="card-grid"></div>
+      </div>
+      <div id="service-details"></div>
+    </div>
+  </section>
+
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact" class="section">
+    <div class="container">
+      <h2>Contact</h2>
+      <form id="contact-form">
+        <input type="text" name="name" placeholder="Your name" required>
+        <input type="email" name="email" placeholder="Your email" required>
+        <textarea name="message" placeholder="Your message" rows="5" required></textarea>
+        <button type="submit" class="btn">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="Scripts/responsiveNav.js"></script>
+  <script src="Scripts/serviceData.js"></script>
+  <script src="Scripts/mobileAdjust.js"></script>
+  <script src="Scripts/smoothScroll.js"></script>
+  <script src="Scripts/buildServiceCards.js"></script>
+  <script src="Scripts/serviceDetailPages.js"></script>
+  <script src="Scripts/servicesDropDown.js"></script>
+  <script src="Scripts/logoClick.js"></script>
+  <script src="Scripts/imgCarousel.js"></script>
+  
+
+</body>
+</html>

@@ -1,0 +1,18 @@
+<svg viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="240" fill="#eaf4ee"/>
+  <circle cx="200" cy="120" r="92" fill="#d7ece0"/>
+  <!-- surgical light -->
+  <g stroke="#277C4B" stroke-width="5" stroke-linecap="round">
+    <line x1="200" y1="55" x2="200" y2="40"/>
+    <line x1="180" y1="60" x2="170" y2="48"/>
+    <line x1="220" y1="60" x2="230" y2="48"/>
+  </g>
+  <ellipse cx="200" cy="78" rx="34" ry="14" fill="#ffffff" stroke="#277C4B" stroke-width="5"/>
+  <ellipse cx="200" cy="80" rx="22" ry="8" fill="#cfe9da"/>
+  <!-- scalpel -->
+  <g transform="translate(200 150) rotate(-30)">
+    <rect x="-6" y="-50" width="12" height="60" rx="4" fill="#ffffff" stroke="#277C4B" stroke-width="4"/>
+    <path d="M-6 -50 L0 -68 L6 -50 Z" fill="#277C4B"/>
+    <rect x="-5" y="10" width="10" height="34" rx="4" fill="#0b5324"/>
+  </g>
+</svg>

@@ -1,0 +1,32 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --color-primary: #277C4B;
+  --color-dark: #0b5324;
+  --color-light-bg: #f3f6f3;
+  --color-text: #0b5324;
+  --max-width: 1100px;
+}
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+/* ===== SCROLLBAR ===== */
+html { scrollbar-width: thin; scrollbar-color: #c1c5cc transparent; }
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background-color: #c1c5cc; border-radius: 8px; border: 3px solid #fff; }
+::-webkit-scrollbar-thumb:hover { background-color: #9aa0aa; }
+
+/* ===== GLOBAL HELPERS ===== */
+.container { max-width: var(--max-width); margin: 0 auto; padding: 0 20px; }
+a { text-decoration: none; color: inherit; }
+ul, li { list-style: none; } /* NOTE: was duplicated later in original file (removed dupe) */
+

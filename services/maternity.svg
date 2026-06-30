@@ -1,0 +1,13 @@
+<svg viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="240" fill="#eaf4ee"/>
+  <circle cx="200" cy="120" r="92" fill="#d7ece0"/>
+  <!-- parent figure -->
+  <circle cx="182" cy="84" r="16" fill="#277C4B"/>
+  <path d="M150 168 q0 -52 32 -52 q32 0 32 52 z" fill="#277C4B"/>
+  <!-- child figure -->
+  <circle cx="226" cy="106" r="11" fill="#0b5324"/>
+  <path d="M206 168 q0 -34 20 -34 q20 0 20 34 z" fill="#0b5324"/>
+  <!-- small heart -->
+  <path d="M200 70 c-4 -8 -16 -6 -16 3 c0 7 9 12 16 18 c7 -6 16 -11 16 -18 c0 -9 -12 -11 -16 -3 z"
+        fill="#ffffff" opacity="0.9"/>
+</svg>

@@ -1,0 +1,13 @@
+<svg viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="240" fill="#eaf4ee"/>
+  <circle cx="200" cy="120" r="92" fill="#d7ece0"/>
+  <!-- clipboard -->
+  <rect x="166" y="66" width="68" height="88" rx="8" fill="#ffffff" stroke="#277C4B" stroke-width="5"/>
+  <rect x="186" y="60" width="28" height="12" rx="4" fill="#277C4B"/>
+  <line x1="180" y1="92" x2="220" y2="92" stroke="#277C4B" stroke-width="4" stroke-linecap="round"/>
+  <line x1="180" y1="106" x2="220" y2="106" stroke="#277C4B" stroke-width="4" stroke-linecap="round"/>
+  <line x1="180" y1="120" x2="206" y2="120" stroke="#277C4B" stroke-width="4" stroke-linecap="round"/>
+  <!-- stethoscope draped over -->
+  <path d="M150 100 q-10 30 16 40 q20 8 18 -10" fill="none" stroke="#0b5324" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="186" cy="132" r="9" fill="#0b5324"/>
+</svg>

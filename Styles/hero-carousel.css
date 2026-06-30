@@ -1,0 +1,50 @@
+/* ===== HERO ===== */
+.hero {
+  position: relative; color: #fff; text-align: center;
+  min-height: 60vh; display: flex;
+  align-items: center; justify-content: center; overflow: hidden;
+}
+.hero h1 { font-size: 3rem; margin-bottom: 8px; text-shadow: 0 2px 8px rgba(0,0,0,0.3), 0 1px 3px rgba(0,0,0,0.8); }
+.hero p  { font-size: 1.1rem; margin-bottom: 35px; opacity: 0.95; text-shadow: 0 2px 6px rgba(0,0,0,0.6); }
+
+.btn {
+  display: inline-block;
+  background: #fff; color: var(--color-primary);
+  border: none; padding: 12px 28px;
+  font-size: 1rem; font-weight: 600; border-radius: 6px;
+  cursor: pointer; transition: transform 0.15s, box-shadow 0.15s;
+}
+.btn:hover { transform: translateY(-2px); box-shadow: 0 6px 14px rgba(0,0,0,0.15); }
+.hero-content { position: relative; z-index: 2; }
+
+/* ===== CAROUSEL ===== */
+.carousel { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+.carousel::after { content: ''; position: absolute; inset: 0; background: rgba(1,37,9,0.55); z-index: 1; }
+.carousel-track { position: relative; height: 100%; }
+.carousel-slide { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease; }
+.carousel-slide.active { opacity: 1; }
+.carousel-slide img { width: 100%; height: 100%; display: block; object-fit: cover; }
+
+.carousel-btn {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  background: rgba(0,0,0,0.4); color: #fff; border: none;
+  width: 40px; height: 40px; border-radius: 50%; font-size: 1.1rem;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s; z-index: 2;
+}
+.carousel-btn:hover { background: rgba(0,0,0,0.65); }
+.carousel-btn.prev { left: 16px; }
+.carousel-btn.next { right: 16px; }
+
+.carousel-dots { position: absolute; bottom: 18px; left: 0; right: 0; display: flex; justify-content: center; gap: 8px; z-index: 2; }
+.carousel-dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.5); border: none; cursor: pointer; padding: 0; transition: background 0.2s, transform 0.2s; }
+.carousel-dot.active { background: #fff; transform: scale(1.2); }
+
+@media (max-width: 600px) {
+  .hero { min-height: 60vh; }
+  .carousel-btn { width: 32px; height: 32px; font-size: 0.9rem; }
+}
+
+@media (max-width: 480px) {
+  .hero h1 { font-size: 1.9rem; }
+}
