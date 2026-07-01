@@ -6,4 +6,4 @@
 #contact-form .btn { background: var(--color-primary); color: #fff; align-self: flex-start; }
 
 /* ===== FOOTER ===== */
-.site-footer { background: var(--color-dark); color: #fff; text-align: center; padding: 24px 20px; }
+.site-footer { background: var(--color-dark); color: #fff; text-align: center; padding: 24px 20px; margin-top: auto; }

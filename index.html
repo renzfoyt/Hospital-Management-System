@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="Styles/service-detail.css">
   <link rel="stylesheet" href="Styles/form-footer.css">
   <link rel="stylesheet" href="Styles/hero-carousel.css">
+  <link rel="stylesheet" href="Styles/find-doctor.css">
 
 
 </head>
@@ -98,6 +99,100 @@
     </div>
   </section>
 
+
+  <!-- ===== FIND A DOCTOR ===== -->
+  <section id="FindDoc" class="section alt-bg">
+    <div class="container">
+      <h2>Find a Doctor</h2>
+      <p class="section-subtitle">Search our directory by name, specialty, availability, or coverage.</p>
+      <form id="find-doctor-form" class="finddoc-form">
+        <div class="finddoc-row">
+          <div class="finddoc-field">
+            <label for="fd-name">Doctor's Name</label>
+            <input type="text" id="fd-name" name="doctorName" placeholder="Type 2 or more characters...">
+          </div>
+          <div class="finddoc-field">
+            <label for="fd-specialty">Specialty</label>
+            <select id="fd-specialty" name="specialty">
+              <option value="">Select Specialty</option>
+              <option value="cardiology">Cardiology</option>
+              <option value="pediatrics">Pediatrics</option>
+              <option value="surgery">Surgery</option>
+              <option value="obgyn">OB-GYN</option>
+              <option value="internal-medicine">Internal Medicine</option>
+            </select>
+          </div>
+          <div class="finddoc-field">
+            <label for="fd-subspecialty">Sub-specialty</label>
+            <select id="fd-subspecialty" name="subSpecialty">
+              <option value="">Select Sub-specialty</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="finddoc-field finddoc-days-field">
+          <label>Clinic Day</label>
+          <div class="finddoc-days">
+            <label class="finddoc-checkbox"><input type="checkbox" name="clinicDay" value="sunday"> Sunday</label>
+            <label class="finddoc-checkbox"><input type="checkbox" name="clinicDay" value="monday"> Monday</label>
+            <label class="finddoc-checkbox"><input type="checkbox" name="clinicDay" value="tuesday"> Tuesday</label>
+            <label class="finddoc-checkbox"><input type="checkbox" name="clinicDay" value="wednesday"> Wednesday</label>
+            <label class="finddoc-checkbox"><input type="checkbox" name="clinicDay" value="thursday"> Thursday</label>
+            <label class="finddoc-checkbox"><input type="checkbox" name="clinicDay" value="friday"> Friday</label>
+            <label class="finddoc-checkbox"><input type="checkbox" name="clinicDay" value="saturday"> Saturday</label>
+          </div>
+        </div>
+
+        <div class="finddoc-row">
+          <div class="finddoc-field">
+            <label for="fd-hour-in">Clinic Hour In</label>
+            <select id="fd-hour-in" name="clinicHourIn">
+              <option value="">Select Clinic Hour In</option>
+              <option value="08:00">8:00 AM</option>
+              <option value="09:00">9:00 AM</option>
+              <option value="10:00">10:00 AM</option>
+              <option value="13:00">1:00 PM</option>
+              <option value="14:00">2:00 PM</option>
+            </select>
+          </div>
+          <div class="finddoc-field">
+            <label for="fd-hour-out">Clinic Hour Out</label>
+            <select id="fd-hour-out" name="clinicHourOut">
+              <option value="">Select Clinic Hour Out</option>
+              <option value="12:00">12:00 PM</option>
+              <option value="17:00">5:00 PM</option>
+              <option value="18:00">6:00 PM</option>
+              <option value="20:00">8:00 PM</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="finddoc-row">
+          <div class="finddoc-field">
+            <label for="fd-gender">Filter by Gender</label>
+            <select id="fd-gender" name="gender">
+              <option value="">Select Gender</option>
+              <option value="female">Female</option>
+              <option value="male">Male</option>
+            </select>
+          </div>
+          <div class="finddoc-field">
+            <label for="fd-hmo">Filter by HMO</label>
+            <select id="fd-hmo" name="hmo">
+              <option value="">Select HMO</option>
+              <option value="maxicare">Maxicare</option>
+              <option value="intellicare">Intellicare</option>
+              <option value="medicard">Medicard</option>
+              <option value="philcare">PhilCare</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" class="btn">Search Doctors</button>
+      </form>
+      <div id="find-doctor-results"></div>
+    </div>
+  </section>
 
   <!-- ===== CONTACT ===== -->
   <section id="contact" class="section">
