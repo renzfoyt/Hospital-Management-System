@@ -1,10 +1,15 @@
 /* ===== SECTIONS ===== */
-.section { padding: 80px 20px; }
+.section {
+  padding: 25px 20px 170px;
+  scroll-margin-top: 90px;
+  min-height: calc(100vh - 90px);
+}
+#about { padding-top: 100px; }
 .section h2 { font-size: 2rem; margin-bottom: 20px; text-align: center; }
 .alt-bg { background: var(--color-light-bg); }
 
 /* ===== CARD GRID ===== */
-.section-subtitle { text-align: center; color: #4b5a51; margin-top: -8px; margin-bottom: 10px; font-size: 0.95rem; }
+.section-subtitle { text-align: center; color: #4b5a51; margin-top: -12px; margin-bottom: 10px; font-size: 0.95rem; }
 .card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 30px; align-items: start; }
 
 @media (max-width: 700px) {

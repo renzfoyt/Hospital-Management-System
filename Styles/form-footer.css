@@ -1,5 +1,6 @@
 
 /* ===== FORM ===== */
+#contact { padding-bottom: 210px; }
 #contact-form { max-width: 500px; margin: 30px auto 0; display: flex; flex-direction: column; gap: 14px; }
 #contact-form input,
 #contact-form textarea { padding: 12px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 1rem; font-family: inherit; }
