@@ -13,6 +13,8 @@
   <link rel="stylesheet" href="Styles/form-footer.css">
   <link rel="stylesheet" href="Styles/hero-carousel.css">
   <link rel="stylesheet" href="Styles/find-doctor.css">
+  <link rel="stylesheet" href="Styles/book-appointment.css">
+
 
 
 </head>
@@ -82,7 +84,17 @@
         patient-centered care backed by years of clinical expertise and professional excellence.
         As the first hospital in Parañaque City, we have proudly served generations of families by
         bringing together a diverse team of trusted specialists across multiple medical and surgical
-        disciplines.
+        disciplines.<br><br><br>
+
+        Our doctors work collaboratively with highly trained nurses, allied health professionals, 
+        and dedicated support staff to provide comprehensive and personalized treatment for every patient. 
+        Through a multidisciplinary approach, we ensure that each individual receives coordinated care tailored 
+        to their unique health needs, from preventive consultations to advanced medical interventions.<br><br><br>
+
+        Committed to continuous learning and innovation, our physicians stay updated with the latest medical advancements,
+        evidence-based practices, and modern treatment techniques. Supported by the hospital's advanced facilities and 
+        patient-focused environment, they strive to deliver quality healthcare that promotes healing, wellness, and improved 
+        quality of life for the communities we proudly serve.
     </div>
   </section>
 
@@ -193,6 +205,78 @@
     </div>
   </section>
 
+
+  <!-- ===== BOOK APPOINTMENT ===== -->
+  <section id="Book" class="section alt-bg">
+    <div class="container">
+      <h2>Book an Appointment</h2>
+      <p class="section-subtitle">Fill up this form to book an appointment with our specialists.</p>
+
+      <form id="book-appointment-form" class="ba-form" novalidate>
+        <div class="ba-field">
+          <label for="ba-department">Department</label>
+          <select id="ba-department" name="department" required>
+            <option value="">Select Department</option>
+          </select>
+        </div>
+
+        <div class="ba-field">
+          <label for="ba-service">Select Service</label>
+          <select id="ba-service" name="service" required disabled>
+            <option value="">Select Department First</option>
+          </select>
+        </div>
+
+        <div class="ba-row">
+          <div class="ba-field">
+            <label for="ba-date">Preferred Date</label>
+            <input type="date" id="ba-date" name="date" required>
+          </div>
+          <div class="ba-field">
+            <label for="ba-time">Preferred Time</label>
+            <select id="ba-time" name="time" required>
+              <option value="">Select Time</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="ba-row">
+          <div class="ba-field">
+            <label for="ba-first-name">First Name</label>
+            <input type="text" id="ba-first-name" name="firstName" placeholder="First Name" required>
+          </div>
+          <div class="ba-field">
+            <label for="ba-last-name">Last Name</label>
+            <input type="text" id="ba-last-name" name="lastName" placeholder="Last Name" required>
+          </div>
+        </div>
+
+        <div class="ba-row">
+          <div class="ba-field">
+            <label for="ba-mobile">Mobile Number</label>
+            <input type="tel" id="ba-mobile" name="mobile" placeholder="e.g. 0917 123 4567" required>
+          </div>
+          <div class="ba-field">
+            <label for="ba-email">Email</label>
+            <input type="email" id="ba-email" name="email" placeholder="you@example.com" required>
+          </div>
+        </div>
+
+        <div class="ba-field">
+          <label for="ba-message">Your Message</label>
+          <textarea id="ba-message" name="message" rows="4" placeholder="Anything else we should know? (optional)"></textarea>
+        </div>
+
+        <button type="submit" class="btn ba-submit-btn">
+          <span>Book an Appointment</span>
+          <span class="ba-submit-icon" aria-hidden="true">+</span>
+        </button>
+      </form>
+
+      <div id="book-appointment-confirmation" class="ba-confirmation" hidden></div>
+    </div>
+  </section>
+
   
   <!-- ===== CONTACT ===== -->
   <section id="contact" class="section">
@@ -226,6 +310,7 @@
   <script src="Scripts/imgCarousel.js"></script>
   <script src="Scripts/doctorData.js"></script>
   <script src="Scripts/findDoctor.js"></script>
+   <script src="Scripts/bookAppointment.js"></script>
   
 
 </body>
