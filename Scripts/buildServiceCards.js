@@ -6,8 +6,10 @@ cardGrid.innerHTML = SERVICES.map(s => `
     <div class="card-body">
       <h3>${s.title}</h3>
       <div class="card-desc">
-        <p>${s.summary}</p>
-        <a href="#service-${s.id}" class="card-link" data-service-link="${s.id}">Learn more &rarr;</a>
+        <div class="card-desc-inner">
+          <p>${s.summary}</p>
+          <a href="#service-${s.id}" class="card-link" data-service-link="${s.id}">Learn more &rarr;</a>
+        </div>
       </div>
     </div>
   </button>
@@ -26,13 +28,45 @@ serviceDetailsContainer.innerHTML = SERVICES.map(s => `
   </div>
 `).join('');
 
-// ===== Expandable cards =====
+// ===== Expandable cards (JS-driven animation) =====
+function animateCardDesc(desc, fromHeight, toHeight, fromOpacity, toOpacity, duration = 300) {
+  const startTime = performance.now();
+  function ease(t) { return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2,3)/2; }
+  function step(now) {
+    const progress = Math.min((now - startTime) / duration, 1);
+    const eased = ease(progress);
+    desc.style.maxHeight = (fromHeight + (toHeight - fromHeight) * eased) + 'px';
+    desc.style.opacity = fromOpacity + (toOpacity - fromOpacity) * eased;
+    if (progress < 1) {
+      requestAnimationFrame(step);
+    } else if (toHeight === 0) {
+      desc.style.maxHeight = '0px';
+    }
+  }
+  requestAnimationFrame(step);
+}
+
 const serviceCards = document.querySelectorAll('#services .card');
 serviceCards.forEach(card => {
   card.addEventListener('click', (e) => {
     if (e.target.closest('[data-service-link]')) return;
     const isOpen = card.getAttribute('aria-expanded') === 'true';
-    serviceCards.forEach(c => c.setAttribute('aria-expanded', 'false'));
-    card.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+
+    serviceCards.forEach(c => {
+      const desc = c.querySelector('.card-desc');
+      if (!desc) return;
+      const currentHeight = desc.getBoundingClientRect().height;
+      c.setAttribute('aria-expanded', 'false');
+      animateCardDesc(desc, currentHeight, 0, 1, 0);
+    });
+
+    if (!isOpen) {
+      card.setAttribute('aria-expanded', 'true');
+      const desc = card.querySelector('.card-desc');
+      const inner = card.querySelector('.card-desc-inner');
+      if (desc && inner) {
+        animateCardDesc(desc, 0, inner.scrollHeight, 0, 1);
+      }
+    }
   });
 });
