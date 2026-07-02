@@ -285,12 +285,23 @@
   <section id="contact" class="section">
     <div class="container">
       <h2>Contact Us</h2>
-      <form id="contact-form">
-        <input type="text" name="name" placeholder="Your name" required>
-        <input type="email" name="email" placeholder="Your email" required>
-        <textarea name="message" placeholder="Your message" rows="5" required></textarea>
-        <button type="submit" class="btn">Send Message</button>
-      </form>
+     <form id="contact-form" novalidate>
+  <div class="cf-field">
+    <label for="cf-name">Your Name</label>
+    <input type="text" id="cf-name" name="name" placeholder="Your name" required>
+  </div>
+  <div class="cf-field">
+    <label for="cf-email">Your Email</label>
+    <input type="email" id="cf-email" name="email" placeholder="Your email" required>
+  </div>
+  <div class="cf-field">
+    <label for="cf-message">Your Message</label>
+    <textarea id="cf-message" name="message" placeholder="Your message" rows="5" required></textarea>
+  </div>
+  <button type="submit" class="btn">Send Message</button>
+</form>
+
+<div id="contact-confirmation" class="cf-confirmation" hidden></div>
     </div>
   </section>
 
@@ -313,7 +324,9 @@
   <script src="Scripts/imgCarousel.js"></script>
   <script src="Scripts/doctorData.js"></script>
   <script src="Scripts/findDoctor.js"></script>
-   <script src="Scripts/bookAppointment.js"></script>
+  <script src="Scripts/bookAppointment.js"></script>
+  <script src="Scripts/contactForm.js"></script>
+  
   
 
 </body>

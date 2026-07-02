@@ -155,6 +155,11 @@
     showConfirmation(data);
   });
 
+  document.addEventListener("click", (e) => {
+  if (!form.hidden && !form.contains(e.target)) {
+    clearErrors();
+  }
+});
   confirmationEl.addEventListener("click", (e) => {
     if (e.target.closest("#ba-book-another")) {
       confirmationEl.hidden = true;
