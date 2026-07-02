@@ -1,10 +1,11 @@
 /* ===== SECTIONS ===== */
 .section {
   padding: 25px 20px 170px;
-  scroll-margin-top: 90px;
+  scroll-margin-top: 50px; 
   min-height: calc(100vh - 90px);
 }
-#about { padding-top: 100px; }
+#about { padding-top: 100px; }   /* ← About has its own separate override */
+#contact { padding-bottom: px; min-height: auto; }
 .section h2 { font-size: 2rem; margin-bottom: 20px; text-align: center; }
 .alt-bg { background: var(--color-light-bg); }
 
