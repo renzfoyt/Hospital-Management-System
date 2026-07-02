@@ -52,7 +52,8 @@
 .finddoc-form .btn { background: var(--color-primary); color: #fff; align-self: flex-start; }
 
 @media (max-width: 700px) {
-  .finddoc-row { grid-template-columns: 1fr; }
+  .finddoc-row,
+  .finddoc-row:has(.finddoc-field:nth-child(2):last-child) { grid-template-columns: 1fr; }
   .finddoc-form { padding: 20px; }
 }
 
