@@ -202,9 +202,14 @@
             </select>
           </div>
         </div>
+
+        <div class="finddoc-actions">
+          <button type="button" id="finddoc-clear-btn" class="finddoc-clear-btn">Clear All</button>
+        </div>
       </form>
 
-      <div id="find-doctor-results"></div>
+  <p id="find-doctor-count" class="finddoc-count"></p>
+  <div id="find-doctor-results"></div>
     </div>
   </section>
 
@@ -270,10 +275,13 @@
           <textarea id="ba-message" name="message" rows="4" placeholder="Anything else we should know? (optional)"></textarea>
         </div>
 
-        <button type="submit" class="btn ba-submit-btn">
-          <span>Book an Appointment</span>
-          <span class="ba-submit-icon" aria-hidden="true">+</span>
-        </button>
+        <div class="ba-actions">
+          <button type="submit" class="btn ba-submit-btn">
+            <span>Book an Appointment</span>
+            <span class="ba-submit-icon" aria-hidden="true">+</span>
+          </button>
+          <button type="button" id="ba-clear-btn" class="ba-clear-btn">Clear All</button>
+        </div>
       </form>
 
       <div id="book-appointment-confirmation" class="ba-confirmation" hidden></div>

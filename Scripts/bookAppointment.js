@@ -155,11 +155,21 @@
     showConfirmation(data);
   });
 
-  document.addEventListener("click", (e) => {
+ document.addEventListener("click", (e) => {
   if (!form.hidden && !form.contains(e.target)) {
     clearErrors();
   }
 });
+
+  const clearBtn = document.getElementById("ba-clear-btn");
+  if (clearBtn) {
+    clearBtn.addEventListener("click", () => {
+      form.reset();
+      clearErrors();
+      populateServices("");
+    });
+  }
+
   confirmationEl.addEventListener("click", (e) => {
     if (e.target.closest("#ba-book-another")) {
       confirmationEl.hidden = true;

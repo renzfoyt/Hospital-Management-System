@@ -21,6 +21,7 @@
   const VISIBLE_COUNT = 4;
 
   const resultsEl = document.getElementById("find-doctor-results");
+  const countEl = document.getElementById("find-doctor-count");
   const form = document.getElementById("find-doctor-form");
 
   let currentResults = [];
@@ -61,6 +62,17 @@
           <li><strong>HMO:</strong> ${hmos}</li>
         </ul>${bioBlock}
       </div>`;
+  }
+
+  function updateCount(hasActiveFilters) {
+    if (!hasActiveFilters) {
+      countEl.textContent = "";
+      return;
+    }
+    const n = currentResults.length;
+    countEl.textContent = n === 0
+      ? "No doctors found..."
+      : `${n} doctor${n === 1 ? "" : "s"} found...`;
   }
 
   function render() {
@@ -129,6 +141,11 @@
     };
   }
 
+  function hasFilters(f) {
+    return !!(f.name || f.specialty || f.subSpecialty || f.days.length ||
+      f.hourIn || f.hourOut || f.gender || f.hmo);
+  }
+
   function applyFilters(doctors, f) {
     return doctors.filter(doc => {
       if (f.name && !doc.name.toLowerCase().includes(f.name)) return false;
@@ -144,14 +161,16 @@
   }
 
   function runSearch() {
+    const filters = getFilters();
     try {
       const doctors = window.DoctorDB.loadDoctors();
-      currentResults = applyFilters(doctors, getFilters());
+      currentResults = applyFilters(doctors, filters);
     } catch (err) {
       console.error("Failed to load/filter doctors:", err);
       currentResults = [];
     }
     visibleCount = VISIBLE_COUNT;
+    updateCount(hasFilters(filters));
     render();
   }
 
@@ -161,4 +180,13 @@
   // Re-run the search live on every form change (no submit button)
   form.addEventListener("input", runSearch);
   form.addEventListener("change", runSearch);
+
+  // Clear All: reset every field back to default, then re-run search
+  const clearBtn = document.getElementById("finddoc-clear-btn");
+  if (clearBtn) {
+    clearBtn.addEventListener("click", () => {
+      form.reset();
+      runSearch();
+    });
+  }
 })();
