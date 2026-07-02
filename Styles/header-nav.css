@@ -45,5 +45,10 @@
   color: var(--color-primary);
   flex-shrink: 0;
   margin-right: auto;
+  -webkit-tap-highlight-color: transparent;
 }
+.logo:focus:not(:focus-visible) {
+  outline: none;
+}
+
 .logo-img { height: 60px; width: auto; object-fit: contain; flex-shrink: 0; display: block; }

@@ -1,7 +1,7 @@
 /* ===== SECTIONS ===== */
 .section {
   padding: 25px 20px 170px;
-  scroll-margin-top: 50px; 
+  scroll-margin-top: 90px; 
   min-height: calc(100vh - 90px);
 }
 #about { padding-top: 100px; }   /* ← About has its own separate override */
