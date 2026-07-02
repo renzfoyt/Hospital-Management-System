@@ -7,6 +7,8 @@ function updateNavLayout() {
   const wasCollapsed = navWrap.classList.contains('collapsed');
   navWrap.classList.remove('collapsed');
   navLinks.classList.remove('active');
+  menuToggle.classList.remove('active');
+  menuToggle.setAttribute('aria-expanded', false);
 
   const available = navWrap.clientWidth;
   const required  = logo.scrollWidth + navLinks.scrollWidth + 40 + 40;

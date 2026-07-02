@@ -13,3 +13,18 @@ navLinks.querySelectorAll('a').forEach(link => {
     menuToggle.setAttribute('aria-expanded', false);
   });
 });
+
+// Close mobile menu when clicking/tapping outside of it
+document.addEventListener('click', (event) => {
+  const isOpen = navLinks.classList.contains('active');
+  if (!isOpen) return;
+
+  const clickedInsideMenu   = navLinks.contains(event.target);
+  const clickedToggleButton = menuToggle.contains(event.target);
+
+  if (!clickedInsideMenu && !clickedToggleButton) {
+    navLinks.classList.remove('active');
+    menuToggle.classList.remove('active');
+    menuToggle.setAttribute('aria-expanded', false);
+  }
+});
