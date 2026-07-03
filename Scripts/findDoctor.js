@@ -19,13 +19,44 @@
   };
 
   const VISIBLE_COUNT = 4;
-
-  const resultsEl = document.getElementById("find-doctor-results");
+const resultsEl = document.getElementById("find-doctor-results");
   const countEl = document.getElementById("find-doctor-count");
   const form = document.getElementById("find-doctor-form");
+  const toastEl = document.getElementById("finddoc-toast");
+  const toastTextEl = document.getElementById("finddoc-toast-text");
 
   let currentResults = [];
   let visibleCount = VISIBLE_COUNT;
+  let toastFadeTimer = null;
+  let toastHideTimer = null;
+
+  function hideToast() {
+    clearTimeout(toastFadeTimer);
+    clearTimeout(toastHideTimer);
+    toastEl.classList.remove("show", "fade-out");
+  }
+
+  function showMatchToast(count) {
+    clearTimeout(toastFadeTimer);
+    clearTimeout(toastHideTimer);
+
+    toastTextEl.textContent = `${count} doctor${count === 1 ? "" : "s"} matched — tap to view`;
+    toastEl.classList.remove("fade-out");
+    toastEl.classList.add("show");
+
+    // Starts fading at 3.5s, fully hidden by 4s
+    toastFadeTimer = setTimeout(() => {
+      toastEl.classList.add("fade-out");
+    }, 3500);
+
+    toastHideTimer = setTimeout(() => {
+      toastEl.classList.remove("show", "fade-out");
+    }, 4000);
+  }
+
+  toastEl.addEventListener("click", () => {
+    resultsEl.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
 
   function initials(name) {
     return name.replace(/^Dr\.?\s*/i, "").split(" ").map(w => w[0]).join("").slice(0, 2).toUpperCase();
@@ -160,7 +191,7 @@
     });
   }
 
-  function runSearch() {
+ function runSearch() {
     const filters = getFilters();
     try {
       const doctors = window.DoctorDB.loadDoctors();
@@ -170,8 +201,15 @@
       currentResults = [];
     }
     visibleCount = VISIBLE_COUNT;
-    updateCount(hasFilters(filters));
+    const active = hasFilters(filters);
+    updateCount(active);
     render();
+
+    if (active && currentResults.length > 0) {
+      showMatchToast(currentResults.length);
+    } else {
+      hideToast();
+    }
   }
 
   // Show the first 4 doctors immediately on page load, before any input
@@ -182,10 +220,11 @@
   form.addEventListener("change", runSearch);
 
   // Clear All: reset every field back to default, then re-run search
-  const clearBtn = document.getElementById("finddoc-clear-btn");
+const clearBtn = document.getElementById("finddoc-clear-btn");
   if (clearBtn) {
     clearBtn.addEventListener("click", () => {
       form.reset();
+      hideToast();
       runSearch();
     });
   }

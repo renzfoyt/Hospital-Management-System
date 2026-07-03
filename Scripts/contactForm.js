@@ -5,6 +5,7 @@
 
   const nameInput = document.getElementById("cf-name");
   const emailInput = document.getElementById("cf-email");
+  const numberInput = document.getElementById("cf-mnumber");
   const messageInput = document.getElementById("cf-message");
   const confirmationEl = document.getElementById("contact-confirmation");
 
@@ -27,6 +28,7 @@
     let valid = true;
     if (!data.name.trim()) { showError(nameInput, "Please enter your name."); valid = false; }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email.trim())) { showError(emailInput, "Enter a valid email address."); valid = false; }
+    if (!/^[0-9+()\-\s]{7,}$/.test(data.number.trim())) { showError(numberInput, "Enter a valid mobile number."); valid = false; }
     if (!data.message.trim()) { showError(messageInput, "Please enter a message."); valid = false; }
     return valid;
   }
@@ -49,6 +51,7 @@
     const data = {
       name: fd.get("name") || "",
       email: fd.get("email") || "",
+      number: fd.get("number") || "",
       message: fd.get("message") || ""
     };
 

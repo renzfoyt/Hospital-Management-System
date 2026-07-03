@@ -37,3 +37,9 @@
   cursor: pointer;
 }
 .cf-close-btn:hover { background: #f3f4f6; }
+
+/* ===== REQUIRED FIELD ASTERISK ===== */
+.cf-field label.required::after {
+  content: " *";
+  color: #c0392b;
+}

@@ -115,3 +115,9 @@
   cursor: pointer;
 }
 .ba-close-btn:hover { background: #f3f4f6; }
+
+/* ===== REQUIRED FIELD ASTERISK ===== */
+.ba-field label.required::after {
+  content: " *";
+  color: #c0392b;
+}
