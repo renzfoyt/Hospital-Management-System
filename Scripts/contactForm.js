@@ -43,7 +43,31 @@
     `;
   }
 
-  form.addEventListener("submit", (e) => {
+  function showSubmitError(message) {
+    let errEl = form.querySelector(".cf-submit-error");
+    if (!errEl) {
+      errEl = document.createElement("p");
+      errEl.className = "cf-submit-error";
+      errEl.style.color = "#c0392b";
+      errEl.style.marginTop = "10px";
+      form.appendChild(errEl);
+    }
+    errEl.textContent = message;
+  }
+
+  async function saveMessage(data) {
+    const { error } = await supabaseClient.from("contact_messages").insert([
+      {
+        name: data.name,
+        email: data.email,
+        number: data.number,
+        message: data.message
+      }
+    ]);
+    return error;
+  }
+
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
     clearErrors();
 
@@ -56,6 +80,19 @@
     };
 
     if (!validate(data)) return;
+
+    const submitBtn = form.querySelector('button[type="submit"]');
+    if (submitBtn) submitBtn.disabled = true;
+
+    const error = await saveMessage(data);
+
+    if (submitBtn) submitBtn.disabled = false;
+
+    if (error) {
+      console.error("Supabase insert error:", error);
+      showSubmitError("Something went wrong sending your message. Please try again.");
+      return;
+    }
 
     showConfirmation(data);
   });
@@ -74,4 +111,4 @@
       form.reset();
     }
   });
-})();   
+})();

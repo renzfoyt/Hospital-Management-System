@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - Olivarez General Hospital</title>
+  <link rel="stylesheet" href="Styles/admin.css">
+</head>
+<body>
+
+  <!-- ===== LOGIN SCREEN ===== -->
+  <div class="admin-login-wrap" id="admin-login-wrap">
+    <div class="admin-login-card">
+      <img src="logo/olivarezlogo.png" alt="Olivarez General Hospital">
+      <h1>Admin Dashboard</h1>
+      <p class="subtitle">Sign in to view appointments and messages</p>
+
+      <form id="admin-login-form" novalidate>
+        <div class="admin-field">
+          <label for="admin-email">Email</label>
+          <input type="email" id="admin-email" required autocomplete="username">
+        </div>
+        <div class="admin-field">
+          <label for="admin-password">Password</label>
+          <input type="password" id="admin-password" required autocomplete="current-password">
+        </div>
+        <p class="admin-login-error" id="admin-login-error"></p>
+        <button type="submit" class="admin-login-btn" id="admin-login-btn">Sign In</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ===== DASHBOARD ===== -->
+  <div class="admin-dashboard" id="admin-dashboard">
+    <div class="admin-topbar">
+      <div class="admin-topbar-left">
+        <img src="logo/olivarezlogo.png" alt="Olivarez General Hospital">
+        <span>Admin Dashboard</span>
+      </div>
+      <button class="admin-logout-btn" id="admin-logout-btn">Sign Out</button>
+    </div>
+
+    <div class="admin-body">
+      <div class="admin-tabs">
+        <button class="admin-tab-btn active" data-tab="appointments">Appointments</button>
+        <button class="admin-tab-btn" data-tab="messages">Contact Messages</button>
+      </div>
+
+      <!-- APPOINTMENTS PANEL -->
+      <div class="admin-panel active" id="panel-appointments">
+        <div class="admin-panel-header">
+          <h2>Appointment Requests <span class="admin-count-badge" id="appt-count">0</span></h2>
+          <button class="admin-refresh-btn" id="appt-refresh-btn">Refresh</button>
+        </div>
+        <div class="admin-table-wrap">
+          <div id="appt-loading" class="admin-loading">Loading appointments…</div>
+          <table class="admin-table" id="appt-table" hidden>
+            <thead>
+              <tr>
+                <th>Submitted</th>
+                <th>Patient</th>
+                <th>Contact</th>
+                <th>Department / Service</th>
+                <th>Preferred Date &amp; Time</th>
+                <th>Message</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="appt-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- MESSAGES PANEL -->
+      <div class="admin-panel" id="panel-messages">
+        <div class="admin-panel-header">
+          <h2>Contact Messages <span class="admin-count-badge" id="msg-count">0</span></h2>
+          <button class="admin-refresh-btn" id="msg-refresh-btn">Refresh</button>
+        </div>
+        <div class="admin-table-wrap">
+          <div id="msg-loading" class="admin-loading">Loading messages…</div>
+          <table class="admin-table" id="msg-table" hidden>
+            <thead>
+              <tr>
+                <th>Submitted</th>
+                <th>Name</th>
+                <th>Contact</th>
+                <th>Message</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="msg-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="Scripts/supabaseClient.js"></script>
+  <script src="Scripts/admin.js"></script>
+</body>
+</html>
