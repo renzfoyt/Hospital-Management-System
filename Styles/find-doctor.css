@@ -215,6 +215,11 @@
 .finddoc-toast.fade-out { opacity: 0; }
 .finddoc-toast:hover { background: var(--color-primary); }
 
+/* ===== EXTRA BOTTOM SPACE SO BOOK APPOINTMENT DOESN'T CREEP INTO VIEW ===== */
+#FindDoc {
+  padding-bottom: 280px;
+}
+
 @media (max-width: 500px) {
   .finddoc-toast { bottom: 20px; padding: 12px 20px; font-size: 0.88rem; }
 }

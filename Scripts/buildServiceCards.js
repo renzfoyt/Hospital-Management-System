@@ -23,8 +23,9 @@ serviceDetailsContainer.innerHTML = SERVICES.map(s => `
     <div class="service-detail-media"><img src="${s.icon}" alt="" loading="lazy"></div>
     <h2>${s.title}</h2>
     ${s.intro.map(p => `<p>${p}</p>`).join('')}
-    <h3>${s.listTitle}</h3>
-    <ul>${s.list.map(item => `<li>${item}</li>`).join('')}</ul>
+    ${(s.lists || []).map(l => `
+    <h3>${l.title}</h3>
+    <ul>${l.items.map(item => `<li>${item}</li>`).join('')}</ul>`).join('')}
   </div>
 `).join('');
 

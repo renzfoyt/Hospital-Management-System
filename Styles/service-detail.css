@@ -1,6 +1,7 @@
 /* ===Details in Learn More clickable...=== */
 .service-detail h3 {
   margin-top: 32px;
+  margin-bottom: 14px;
 }
 
 .service-detail ul {
@@ -9,10 +10,15 @@
 }
 .service-detail li {
   list-style: disc;
+  margin-bottom: 10px;
+}
+.service-detail li:last-child {
+  margin-bottom: 0;
 }
 
 /* ===Image details in learn more...=== */
 .service-detail-media {
+  position: relative;
   width: 100%;
   max-width: 700px;
   aspect-ratio: 5/3;
@@ -26,6 +32,14 @@
   object-fit: cover;
   object-position: center;
   display: block;
+}
+.service-detail-media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(11, 83, 36, 0.35);
+  mix-blend-mode: multiply;
+  pointer-events: none;
 }
 
 .back-to-services {
