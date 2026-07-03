@@ -21,11 +21,12 @@
   .card-grid { grid-template-columns: 1fr; }
 }
 
-.card {
+ .card {
   display: flex; flex-direction: column; width: 100%; text-align: left;
   font: inherit; color: inherit; background: #fff; border: none;
   border-radius: 10px; padding: 0; cursor: pointer; overflow: hidden;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: box-shadow 0.25s ease;
+  -webkit-tap-highlight-color: transparent;
 }
 .card:hover { box-shadow: 0 10px 22px rgba(0,0,0,0.12); }
 .card:focus-visible { outline: 3px solid var(--color-primary); outline-offset: 2px; }
