@@ -67,22 +67,14 @@ const resultsEl = document.getElementById("find-doctor-results");
     const hours = doc.clinicHourIn && doc.clinicHourOut
       ? `${HOUR_LABELS[doc.clinicHourIn] || doc.clinicHourIn} – ${HOUR_LABELS[doc.clinicHourOut] || doc.clinicHourOut}`
       : "—";
-    const hmos = (doc.hmo || []).map(h => HMO_LABELS[h] || h).join(", ") || "Not specified";
-    const specialtyLabel = SPECIALTY_LABELS[doc.specialty] || doc.specialty || "General";
-
-    const bioBlock = doc.bio ? `
-        <button type="button" class="doctor-bio-toggle" aria-expanded="false">
-          <span>View Bio</span>
-          <svg class="doctor-bio-caret" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true">
-            <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-        <p class="doctor-bio" hidden>${doc.bio}</p>` : "";
+    const specialtyLabel = SPECIALTY_LABELS[doc.specialization] || doc.specialization || "General";
+    const contact = doc.contact_number || "—";
+    const emailStr = doc.email ? `<li><strong>Email:</strong> ${doc.email}</li>` : "";
 
     return `
       <div class="doctor-card" data-id="${doc.id}">
         <div class="doctor-avatar">
-          ${doc.photo ? `<img src="${doc.photo}" alt="${doc.name}">` : `<span>${initials(doc.name)}</span>`}
+          <span>${initials(doc.name)}</span>
         </div>
         <h3 class="doctor-name">${doc.name}</h3>
         <p class="doctor-specialty">${specialtyLabel}${doc.subSpecialty ? " · " + doc.subSpecialty : ""}</p>
@@ -90,8 +82,9 @@ const resultsEl = document.getElementById("find-doctor-results");
           <li><strong>Gender:</strong> ${doc.gender ? doc.gender[0].toUpperCase() + doc.gender.slice(1) : "—"}</li>
           <li><strong>Clinic Days:</strong> ${days}</li>
           <li><strong>Clinic Hours:</strong> ${hours}</li>
-          <li><strong>HMO:</strong> ${hmos}</li>
-        </ul>${bioBlock}
+          <li><strong>Contact:</strong> ${contact}</li>
+          ${emailStr}
+        </ul>
       </div>`;
   }
 
@@ -134,17 +127,7 @@ const resultsEl = document.getElementById("find-doctor-results");
 
   // Event delegation: bio toggle, view more, and hide all handled here,
   // so listeners don't need to be re-attached on every render.
-  resultsEl.addEventListener("click", (e) => {
-    const bioToggle = e.target.closest(".doctor-bio-toggle");
-    if (bioToggle) {
-      const bio = bioToggle.nextElementSibling;
-      const isOpen = bioToggle.getAttribute("aria-expanded") === "true";
-      bioToggle.setAttribute("aria-expanded", String(!isOpen));
-      bioToggle.classList.toggle("open", !isOpen);
-      if (bio) bio.hidden = isOpen;
-      return;
-    }
-
+   resultsEl.addEventListener("click", (e) => {
     if (e.target.closest("#finddoc-view-more")) {
       visibleCount += VISIBLE_COUNT;
       render();
@@ -180,24 +163,32 @@ const resultsEl = document.getElementById("find-doctor-results");
   function applyFilters(doctors, f) {
     return doctors.filter(doc => {
       if (f.name && !doc.name.toLowerCase().includes(f.name)) return false;
-      if (f.specialty && doc.specialty !== f.specialty) return false;
+      if (f.specialty && doc.specialization !== f.specialty) return false;
       if (f.subSpecialty && !(doc.subSpecialty || "").toLowerCase().includes(f.subSpecialty)) return false;
       if (f.days.length && !f.days.every(d => (doc.clinicDays || []).includes(d))) return false;
       if (f.hourIn && doc.clinicHourIn !== f.hourIn) return false;
       if (f.hourOut && doc.clinicHourOut !== f.hourOut) return false;
       if (f.gender && doc.gender !== f.gender) return false;
-      if (f.hmo && !(doc.hmo || []).includes(f.hmo)) return false;
+      // No "hmo" column on the doctors table yet — filter disabled so it
+      // doesn't silently zero out every result if someone uses that dropdown.
+      // if (f.hmo && !(doc.hmo || []).includes(f.hmo)) return false;
       return true;
     });
   }
 
- function runSearch() {
+  async function runSearch() {
     const filters = getFilters();
     try {
-      const doctors = window.DoctorDB.loadDoctors();
-      currentResults = applyFilters(doctors, filters);
+      // Fetch live records directly from the Supabase "doctors" table
+      const { data: doctors, error } = await supabaseClient
+        .from("doctors")
+        .select("*");
+
+      if (error) throw error;
+
+      currentResults = applyFilters(doctors || [], filters);
     } catch (err) {
-      console.error("Failed to load/filter doctors:", err);
+      console.error("Failed to load doctors from database:", err);
       currentResults = [];
     }
     visibleCount = VISIBLE_COUNT;
